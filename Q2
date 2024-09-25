@@ -1,0 +1,8 @@
+SELECT 
+    p.productName,
+    COUNT(od.orderNumber) AS totalOrders,
+    SUM(od.quantityOrdered) AS totalItemsSold
+FROM products p
+JOIN orderdetails od ON p.productCode = od.productCode
+GROUP BY p.productName
+ORDER BY totalItemsSold DESC;

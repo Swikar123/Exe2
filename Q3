@@ -1,0 +1,9 @@
+SELECT 
+    p.productName,
+    COUNT(DISTINCT o.customerNumber) AS totalCustomers
+FROM products p, orderdetails od, orders o
+WHERE p.productCode = od.productCode
+AND od.orderNumber = o.orderNumber
+GROUP BY p.productName
+ORDER BY totalCustomers DESC;
+;
